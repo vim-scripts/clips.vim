@@ -1,18 +1,16 @@
 " Vim syntax file
 " Language    : CLIPS, C Language Integrated Production System
 " Maintainer  : Novikov Artem Gennadievich <novikovag@gmail.com>
-" Last Change : 2009 June 1
+" Last Change : 2009 Sep 7
 
 if exists("b:current_syntax")
   finish
 endif
 
-
 set iskeyword=33-126,^34,^38,^40-41,^59,^60,^124,^126
 
 syn match   clipsIOFormat         /%-\=\d*\.\=\d*[cdefgoxsnr%]/ contained   
 syn match   clipsTODO             /\c\(TODO\|TBD\|FIXME\|XXX\)/ contained
-          
 
 syn match   clipsComment          /;.*$/ contains=clipsTODO
 syn match   clipsFloat            /\<[-+]\=\d\+\.\d*\(\ce[-+]\=\d\+\)\=\>/ 
@@ -24,16 +22,15 @@ syn match   clipsSpecial1         /</
 syn match   clipsSpecial2         /\(<-\|=>\)/
 syn match   clipsSpecial3         /\(|\|&\|\~\):\=/
 syn region  clipsTextString       start=+"+ skip=+\\"+ end=+"+ contains=clipsIOFormat
-syn match   clipsIOSpecial        /"\(a\|r\|r+\|wb\=\)"/
+syn match   clipsIOSpecial     	  /"\(a\|r\|r+\|wb\=\)"/
 syn region  clipsRegion1          start="(" end=")" contains=ALL 
 syn region  clipsRegion2          matchgroup=clipsConditional start="(\s*\(if\|switch\)\>" 
-                                  \ matchgroup=clipsConditional end=")" contains=ALL 
+                                  \matchgroup=clipsConditional end=")" contains=ALL 
 syn region  clipsRegion3          matchgroup=clipsConstruct start="(\s*def\(
-                                  \ class\|facts\|function\|generic\|fmethod\|global\|instances\|
-                                  \ message-handler\|module\|rule\|template\)\{1}" matchgroup=clipsConstruct end=")" contains=ALL
+                                  \class\|facts\|function\|generic\|fmethod\|global\|instances\|
+                                  \message-handler\|module\|rule\|template\)\{1}" matchgroup=clipsConstruct end=")" contains=ALL
 syn region  clipsRegion4          matchgroup=clipsRepeat start="(\s*\(
-                                  \ foreach\|loop-for-count\|while\)" matchgroup=clipsRepeat end=")" contains=ALL
-
+                                  \foreach\|loop-for-count\|while\)" matchgroup=clipsRepeat end=")" contains=ALL
 
 syn keyword clipsAgenda           agenda 
 syn keyword clipsBoolean          TRUE FALSE
@@ -113,7 +110,6 @@ syn keyword clipsCOOLSSlot        slot-allowed-values slot-cardinality slot-defa
 syn keyword clipsCOOLSSlot        slot-direct-delete$ slot-direct-insert$ slot-direct-replace$ slot-existp slot-facets slot-initablep 
 syn keyword clipsCOOLSSlot        slot-insert$ slot-publicp slot-range slot-replace$ slot-sources slot-types slot-writablep 
 
-
 hi def link clipsAgenda           Function
 hi def link clipsBoolean          Boolean
 hi def link clipsComment          Comment
@@ -166,6 +162,4 @@ hi def link clipsCOOLInstance     Function
 hi def link clipsCOOLMessage      Function
 hi def link clipsCOOLSSlot        Function
 
-
 let b:current_syntax = "clips"
-
